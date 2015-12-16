@@ -118,7 +118,11 @@ class XML_RPC2_Backend_Php_Client extends XML_RPC2_Client
             XML_RPC2_ClientHelper::printPreParseDebugInfo($request, $body);
         }
         try {
-            $document = new SimpleXMLElement($body);
+            if(isset($this->libXmlParseHige)) {
+                $document = new SimpleXMLElement($body, LIBXML_PARSEHUGE);
+            } else {
+                $document = new SimpleXMLElement($body);
+            }
             $result   = XML_RPC2_Backend_Php_Response::decode($document);
         } catch (XML_RPC2_Exception $e) {
             if ($this->debug) {
