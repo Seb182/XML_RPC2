@@ -143,6 +143,13 @@ abstract class XML_RPC2_Client
      * @var HTTP_Request2
      */
     protected $httpRequest;
+    
+    /**
+     * ugly hack flag to avoid http://svn.php.net/viewvc/?view=revision&revision=291533
+     * 
+     * Sets XML_PARSE_HUGE flag, which relaxes any hardcoded limit from the parser
+     */
+    protected $libXmlParseHige = false;
     // }}}
     
     // {{{ constructor
@@ -195,6 +202,9 @@ abstract class XML_RPC2_Client
         }
         if (isset($options['uglyStructHack'])) {  
             $this->uglyStructHack = $options['uglyStructHack'];
+        }
+        if (isset($options['libXmlParseHige'])) {  
+            $this->libXmlParseHige = $options['libXmlParseHige'];
         }
         if (isset($options['sslverify'])) {
             if (!(is_bool($options['sslverify']))) {
