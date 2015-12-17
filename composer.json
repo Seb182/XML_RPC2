@@ -39,7 +39,6 @@
     "require": {
         "pear/pear_exception": "*",
         "pear/http_request2": "*",
-        "pear/pear-core": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
